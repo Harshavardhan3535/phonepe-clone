@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phonepe Clone</title>
+
+    <!-- CSS stylesheet -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/queries.css">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+<body>
+    
+    <h1 class="text-primary text-center">Tansaction Account</h1>
+    
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+            <!-- Brand / Logo -->
+            <a class="navbar-brand" href="#">PhonePe</a>
+
+            <!-- Toggle Button for Mobile -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Menu Items -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Home</a>
+                    </li>
+                    
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="accountDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            My Account
+                        </a>
+                        
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="accountDropdown">
+                            <li><span class="dropdown-item-text fw-bold" id="navUserName">Harsh Vardhan</span></li>
+                            <li><span class="dropdown-item-text" id="navUserMobile">+91 98765 43210</span></li>
+                            <li><span class="dropdown-item-text" id="navUserEmail">harsh@email.com</span></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li>
+                                <button class="dropdown-item text-primary" data-bs-toggle="modal" data-bs-target="#balanceModal">Check Balance</button>
+                            </li>
+                            <li>
+                                <span class="dropdown-item-text text-success d-none" id="userBalanceDisplay">Balance: ₹<span id="navUserBalance">****</span></span>
+                            </li>
+                            <li>
+                                <button class="dropdown-item" id="toggle-dark">Dark Mode</button>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Password Modal -->
+    <div class="modal fade" id="balanceModal" tabindex="-1" aria-labelledby="balanceModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                
+                <div class="modal-header">
+                    <h5 class="modal-title" id="balanceModalLabel">Check Balance</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                
+                <div class="modal-body">
+                    <input type="password" id="balancePassword" class="form-control mb-2" placeholder="Enter your password">
+                    <div id="balanceError" class="text-danger small d-none">Incorrect password</div>
+                </div>
+                
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" onclick="verifyPassword()">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Recharge & Pay Bills Section -->
+    <section class="container my-5">
+        <h3 class="text-center mb-4">Recharge & Pay Bills</h3>
+        <div class="row text-center">
+            
+            <!-- Mobile Recharge -->
+            <div class="col-6 col-md-4 mb-4">
+                <button class="btn btn-outline-primary w-100" onclick="openRechargeForm('mobile')">
+                    <img src="images/mobile.png" alt="Mobile" width="50">
+                    <p class="mb-0">Mobile Recharge</p>
+                </button>
+            </div>
+            
+            <!-- DTH -->
+            <div class="col-6 col-md-4 mb-4">
+                <button class="btn btn-outline-primary w-100" onclick="openRechargeForm('dth')">
+                    <img src="images/dth.png" alt="DTH" width="50">
+                    <p class="mb-0">DTH</p>
+                </button>
+            </div>
+            
+            <!-- Electricity -->
+            <div class="col-6 col-md-4 mb-4">
+                <button class="btn btn-outline-primary w-100" onclick="openRechargeForm('electricity')">
+                    <img src="images/electricity.png" alt="Electricity" width="50">
+                    <p class="mb-0">Electricity</p>
+                </button>
+            </div>
+
+            <!-- Gas -->
+            <div class="col-6 col-md-4 mb-4">
+                <button class="btn btn-outline-primary w-100" onclick="openRechargeForm('gas')">
+                    <img src="images/gas.png" alt="Gas" width="50">
+                    <p class="mb-0">Gas</p>
+                </button>
+            </div>
+
+            <!-- Credit Card -->
+            <div class="col-6 col-md-4 mb-4">
+                <button class="btn btn-outline-primary w-100" onclick="openRechargeForm('credit card')">
+                    <img src="images/credit card.png" alt="Credit Card" width="50">
+                    <p class="mb-0">Credit Card</p>
+                </button>
+            </div>
+
+            <!-- Water Bill -->
+            <div class="col-6 col-md-4 mb-4">
+                <button class="btn btn-outline-primary w-100" onclick="openRechargeForm('water bill')">
+                    <img src="images/water bill.png" alt="Water Bill" width="50">
+                    <p class="mb-0">Water Bill</p>
+                </button>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Transfer Money Section -->
+    <section class="container my-5">
+        <h3 class="text-center mb-4">Transfer Money</h3>
+        <div class="row text-center">
+            
+            <div class="col-6 col-md-4 mb-4">
+                <button class="btn btn-outline-success w-100" onclick="openTransferForm('contact')">
+                    <img src="images/contact.png" alt="To Contact" width="50">
+                    <p class="mb-0">To Contact</p>
+                </button>
+            </div>
+            
+            <div class="col-6 col-md-4 mb-4">
+                <button class="btn btn-outline-success w-100" onclick="openTransferForm('bank')">
+                    <img src="images/bank.png" alt="To Bank" width="50">
+                    <p class="mb-0">To Bank Account</p>
+                </button>
+            </div>
+            
+            <div class="col-6 col-md-4 mb-4">
+                <button class="btn btn-outline-success w-100" onclick="openTransferForm('upi')">
+                    <img src="images/upi.png" alt="To UPI" width="50">
+                    <p class="mb-0">To UPI ID</p>
+                </button>
+            </div>
+            <div class="col-6 col-md-3 mb-4">
+                <button class="btn btn-outline-success w-100" onclick="openTransferForm('self')">
+                    <img src="images/self.png" alt="To Self" width="50">
+                    <p class="mb-0">To Self</p>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recent Transactions Section -->
+    <section class="container my-5">
+        <h3 class="text-center mb-4">Recent Transactions</h3>
+        
+        <ul class="list-group" id="recentTransactions">
+            
+            <!-- Transactions will be inserted here dynamically -->
+            <!-- Transaction 1 -->
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <div class="d-flex align-items-center">
+                    <img src="images/user1.png" alt="User 1" width="40" class="me-3 rounded-circle">
+                    <div>
+                        <strong>Vishnu</strong><br>
+                        <small>Paid to Contact</small>
+                    </div>
+                </div>
+                <span class="text-danger">- ₹500</span>
+            </li>
+            
+            <!-- Transaction 2 -->
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <div class="d-flex align-items-center">
+                    <img src="images/user2.png" alt="User 2" width="40" class="me-3 rounded-circle">
+                    <div>
+                        <strong>Electricity Board</strong><br>
+                        <small>Bill Payment</small>
+                    </div>
+                </div>
+                <span class="text-danger">- ₹850</span>
+            </li>
+            
+            <!-- Transaction 3 -->
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <div class="d-flex align-items-center">
+                    <img src="images/user3.png" alt="User 3" width="40" class="me-3 rounded-circle">
+                    <div>
+                        <strong>Received from Raj</strong><br>
+                        <small>UPI</small>
+                    </div>
+                </div>
+                <span class="text-success">+ ₹1,200</span>
+            </li>
+        </ul>
+    </section>
+
+    <section class="container my-5 text-center">
+        <h3 class="mb-4">Receive Money via QR</h3>
+        
+        <div class="mb-3">
+            <input type="text" id="upiInput" class="form-control w-50 mx-auto" placeholder="Enter your UPI ID (e.g., harsh@upi)">
+        </div>
+        
+        <button class="btn btn-primary" onclick="generateQR()">Generate QR Code</button>
+        <div class="mt-4" id="qrContainer" style="display: none;">
+            <p><strong>Your UPI QR Code:</strong></p>
+            <img id="qrImage" src="" alt="QR Code" />
+        </div>
+    </section>
+
+    <section class="container my-5 text-center">
+        <h3 class="mb-4">Send Money</h3>
+        
+        <form id="sendMoneyForm" class="w-50 mx-auto">
+            <div class="mb-3">
+                <input type="text" id="recipient" class="form-control" placeholder="Enter UPI ID (e.g., raj123@upi)" required>
+            </div>
+            
+            <div class="mb-3">
+                <input type="number" id="amount" class="form-control" placeholder="Enter Amount (₹)" required>
+            </div>
+            <button type="submit" class="btn btn-success">Send</button>
+        </form>
+        
+        <div id="confirmation" class="mt-4 text-success fw-bold" style="display: none;"></div>
+    </section>
+
+    <!-- Recharge Modal -->
+    <div class="modal fade" id="rechargeModal" tabindex="-1" aria-labelledby="rechargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <form id="rechargeForm" class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="rechargeModalLabel">Recharge</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="rechargeNumber" class="form-label" id="rechargeLabel">Number / ID</label>
+                        <input type="text" class="form-control" id="rechargeNumber" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="rechargeAmount" class="form-label">Amount (₹)</label>
+                        <input type="number" class="form-control" id="rechargeAmount" required>
+                    </div>
+                </div>
+                
+                <div class="modal-footer">
+                    <small class="text-success d-none me-auto" id="rechargeSuccess">Recharge Successful!</small>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Proceed</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Transfer Modal -->
+    <div class="modal fade" id="transferModal" tabindex="-1" aria-labelledby="transferModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <form id="transferForm" class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="transferModalLabel">Transfer Money</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="transferRecipient" class="form-label" id="transferLabel">Recipient</label>
+                        <input type="text" class="form-control" id="transferRecipient" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="transferAmount" class="form-label">Amount (₹)</label>
+                        <input type="number" class="form-control" id="transferAmount" required>
+                    </div>
+                    <div class="text-success d-none" id="transferSuccess">✅ Transfer Successful!</div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Send</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Bootstrap Bundle JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        const userDetails = {
+            name: "Harsha Vardhan",
+            mobile: "+91 9346689186",
+            email: "harsha.muthukur@email.com",
+            upi: "Srikakulapuharsha@upi",
+            balance: parseInt(localStorage.getItem("walletBalance")) || 20183500,
+            password: "2018" // Set your password here
+        };
+        
+        document.addEventListener("DOMContentLoaded", () => {
+            document.getElementById("navUserName").textContent = userDetails.name;
+            document.getElementById("navUserMobile").textContent = userDetails.mobile;
+            document.getElementById("navUserEmail").textContent = userDetails.email;
+            document.getElementById("navUserUpi").textContent = userDetails.upi;
+            document.getElementById("navUserBalance").textContent = "****";
+            document.getElementById("navUserBalance").setAttribute("data-actual", userDetails.balance); // hidden for now
+        });
+        
+        function verifyPassword() {
+            const input = document.getElementById("balancePassword").value;
+            const error = document.getElementById("balanceError");
+            
+            if (input === userDetails.password) {
+                // Show balance
+                document.getElementById("navUserBalance").textContent = userDetails.balance;
+                document.getElementById("userBalanceDisplay").classList.remove("d-none");
+                error.classList.add("d-none");
+                
+                // Close modal
+                const modal = bootstrap.Modal.getInstance(document.getElementById("balanceModal"));
+                modal.hide();
+                
+                // Clear password input
+                document.getElementById("balancePassword").value = "";
+                
+                // Hide balance after 5 seconds
+                setTimeout(() => {
+                    document.getElementById("navUserBalance").textContent = "****";
+                    document.getElementById("userBalanceDisplay").classList.add("d-none");
+                }, 10000);
+            
+            } else {
+                error.classList.remove("d-none");
+            }
+        }
+    </script>
+
+    <script>
+        const toggleBtn = document.getElementById("toggle-dark");
+        toggleBtn.addEventListener("click", () => {
+            document.body.classList.toggle("dark-mode");
+            
+            // Change button text/icon
+            if (document.body.classList.contains("dark-mode")) {
+                toggleBtn.textContent = "Light Mode";
+            } else {
+                toggleBtn.textContent = "Dark Mode";
+            }
+        });
+    </script>
+
+    <script>
+        const sendMoneyForm = document.getElementById("sendMoneyForm");
+        const confirmation = document.getElementById("confirmation");
+        const transactionList = document.getElementById("transactionList");
+        
+        // Load existing transactions on page load
+        window.addEventListener("DOMContentLoaded", () => {
+            const savedTxns = JSON.parse(localStorage.getItem("transactions")) || [];
+            savedTxns.forEach(txn => renderTransaction(txn));
+        });
+        
+        sendMoneyForm.addEventListener("submit", function (e) {
+            e.preventDefault();
+            
+            const recipient = document.getElementById("recipient").value.trim();
+            const amount = document.getElementById("amount").value.trim();
+            const time = new Date().toLocaleString();
+            
+            if (recipient !== "" && amount !== "" && Number(amount) > 0) {
+                const transaction = {
+                    recipient,
+                    amount,
+                    time
+                };
+                
+                // Save to localStorage
+                const existing = JSON.parse(localStorage.getItem("transactions")) || [];
+                existing.push(transaction);
+                localStorage.setItem("transactions", JSON.stringify(existing));
+                
+                // Add to DOM
+                addTransactionToDOM(transaction, true);
+                
+                // Confirmation
+                confirmation.style.display = "block";
+                confirmation.textContent = `✅ ₹${amount} sent successfully to ${recipient}`;
+                sendMoneyForm.reset();
+                
+                setTimeout(() => {
+                    confirmation.style.display = "none";
+                }, 3000);
+            } else {
+                alert("Please enter valid UPI ID and amount.");
+            }
+        });
+        function addTransactionToDOM(transaction, toTop = false) {
+            const newItem = document.createElement("li");
+            newItem.className = "list-group-item d-flex justify-content-between align-items-center";
+                
+            newItem.innerHTML = `
+            <div class="d-flex align-items-center">
+                <img src="images/user1.png" alt="${transaction.recipient}" width="40" class="me-3 rounded-circle">
+                <div>
+                    <strong>${transaction.recipient}</strong><br>
+                    <small>${transaction.time}</small>
+                </div>
+            </div>
+            <span class="text-danger">- ₹${transaction.amount}</span>
+            `;
+            
+            // Add to top or bottom
+            if (toTop) {
+                transactionList.prepend(newItem);
+            } else {
+                transactionList.appendChild(newItem);
+            }
+        }
+    </script>
+
+    <script>
+        let currentService = '';
+        
+        function openRechargeForm(service) {
+            currentService = service;
+            
+            const modalLabel = document.getElementById("rechargeModalLabel");
+            const label = document.getElementById("rechargeLabel");
+            
+            // Customize modal label
+            switch (service) {
+                case 'mobile':
+                    modalLabel.textContent = "Mobile Recharge";
+                    label.textContent = "Mobile Number";
+                    break;
+                case 'dth':
+                    modalLabel.textContent = "DTH Recharge";
+                    label.textContent = "Subscriber ID";
+                    break;
+                case 'electricity':
+                    modalLabel.textContent = "Electricity Bill";
+                    label.textContent = "Bill Number";
+                    break;
+                case 'gas':
+                    modalLabel.textContent = "Gas Bill";
+                    label.textContent = "Gas Number";
+                    break;
+                case 'credit card':
+                    modalLabel.textContent = "Credit Card Bill";
+                    label.textContent = "Credit Card Bill Number";
+                    break;
+                case 'water bill':
+                    modalLabel.textContent = "Water Bill";
+                    label.textContent = "Bill Number";
+                    break;
+                default:
+                modalLabel.textContent = "Recharge";
+                label.textContent = "Number / ID";
+            }
+            
+            document.getElementById("rechargeNumber").value = '';
+            document.getElementById("rechargeAmount").value = '';
+            document.getElementById("rechargeSuccess").classList.add("d-none");
+            
+            const modal = new bootstrap.Modal(document.getElementById('rechargeModal'));
+            modal.show();
+        }
+        document.getElementById("rechargeForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+            
+            const number = document.getElementById("rechargeNumber").value;
+            const amount = document.getElementById("rechargeAmount").value;
+            const serviceName = getServiceName(currentService);
+            
+            if (number && amount) {
+                document.getElementById("rechargeSuccess").classList.remove("d-none");
+                
+                // Deduct from balance
+                userDetails.balance -= parseInt(amount);
+                document.getElementById("navUserBalance").textContent = userDetails.balance;
+                localStorage.setItem("walletBalance", userDetails.balance);
+                
+                // Add to transaction history
+                const transaction = {
+                    name: getServiceName(currentService),
+                    number,
+                    amount,
+                    img: `images/${currentService}.png`,
+                    time: new Date().toLocaleString()
+                };
+                
+                saveTransaction(transaction);
+                renderTransaction(transaction);
+                
+                // Auto close modal
+                setTimeout(() => {
+                    bootstrap.Modal.getInstance(document.getElementById("rechargeModal")).hide();
+                }, 2500);
+            }
+        });
+        
+        function getServiceName(key) {
+            switch (key) {
+                case 'mobile': return "Mobile Recharge";
+                case 'dth': return "DTH Recharge";
+                case 'electricity': return "Electricity Bill";
+                case 'gas': return "Gas Bill";
+                case 'credit card': return "Credit Card Bill";
+                case 'water bill': return "Water Bill";
+                default: return "Recharge";
+            }
+        }
+
+        function saveTransaction(data) {
+            let txns = JSON.parse(localStorage.getItem("transactions")) || [];
+            txns.unshift(data); // Add to start
+            localStorage.setItem("transactions", JSON.stringify(txns));
+        }
+        
+        function renderTransaction(txn) {
+            const recentList = document.getElementById("recentTransactions");
+            const li = document.createElement("li");
+            li.className = "list-group-item d-flex justify-content-between align-items-center";
+            li.innerHTML = `
+                <div class="d-flex align-items-center">
+                    <img src="${txn.img}" alt="${txn.name}" width="40" class="me-3 rounded-circle">
+                    <div>
+                        <strong>${txn.name}</strong><br>
+                        <small>To ${txn.number}</small><br>
+                        <small class="text-muted">${txn.time}</small>
+                    </div>
+                </div>
+                <span class="text-danger">- ₹${txn.amount}</span>
+            `;
+            recentList.prepend(li);
+        }
+    </script>
+
+    <script>
+        let currentTransferMode = '';
+        
+        function openTransferForm(mode) {
+            currentTransferMode = mode;
+            const label = document.getElementById("transferLabel");
+            const title = document.getElementById("transferModalLabel");
+            
+            switch (mode) {
+                case 'contact':
+                    title.textContent = "Send to Contact";
+                    label.textContent = "Contact Name / Number";
+                    break;
+                case 'bank':
+                    title.textContent = "Send to Bank Account";
+                    label.textContent = "Account Number";
+                    break;
+                case 'upi':
+                    title.textContent = "Send to UPI ID";
+                    label.textContent = "UPI ID";
+                    break;
+                case 'self':
+                    title.textContent = "Send to Self";
+                    label.textContent = "Account Number";
+                    break;
+            }
+            
+            document.getElementById("transferRecipient").value = '';
+            document.getElementById("transferAmount").value = '';
+            document.getElementById("transferSuccess").classList.add("d-none");
+            
+            const modal = new bootstrap.Modal(document.getElementById("transferModal"));
+            modal.show();
+        }
+        
+        document.getElementById("transferForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+            
+            const recipient = document.getElementById("transferRecipient").value;
+            const amount = document.getElementById("transferAmount").value;
+            
+            if (recipient && amount) {
+                // Deduct from balance
+                userDetails.balance -= parseInt(amount);
+                document.getElementById("navUserBalance").textContent = userDetails.balance;
+                localStorage.setItem("walletBalance", userDetails.balance);
+                
+                // Save transaction
+                const transaction = {
+                    name: `Transfer via ${currentTransferMode.toUpperCase()}`,
+                    number: recipient,
+                    amount,
+                    img: `images/${currentTransferMode}.png`,
+                    time: new Date().toLocaleString()
+                };
+
+                saveTransaction(transaction);
+                renderTransaction(transaction);
+                
+                document.getElementById("transferSuccess").classList.remove("d-none");
+                
+                // Auto-close modal
+                setTimeout(() => {
+                    bootstrap.Modal.getInstance(document.getElementById("transferModal")).hide();
+                }, 2500);
+            }
+        });
+    </script>
+
+    <!-- Footer Section -->
+    <footer class="bg-dark text-white text-center py-3 mt-5">
+        <p>PhonePe UI Clone by Harsh</p>
+        <small>&copy; 2025 | All Rights Reserved</small>
+    </footer>
+
+</body>
+<script>
+  function generateQR() {
+    const upiID = document.getElementById("upiInput").value.trim();
+    const qrContainer = document.getElementById("qrContainer");
+    const qrImage = document.getElementById("qrImage");
+
+    if (upiID !== "") {
+      const qrURL = `https://api.qrserver.com/v1/create-qr-code/?data=upi://pay?pa=${upiID}&size=200x200`;
+      qrImage.src = qrURL;
+      qrContainer.style.display = "block";
+    } else {
+      alert("Please enter a valid UPI ID.");
+    }
+  }
+</script>
+</html>

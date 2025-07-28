@@ -1,0 +1,356 @@
+body {
+  font-family: "Montserrat", sans-serif;
+  background-color: #f8f9fa;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  color: #333;
+}
+
+h1, h2, h3 {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Navbar */
+.navbar {
+  padding: 1rem 2rem;
+  background-color: #6739B6 !important;
+}
+
+.navbar-brand img {
+  width: 200px;
+  height: auto;
+}
+
+.navbar a {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 1.1rem;
+  padding: 0 20px;
+}
+
+.navbar a:hover {
+  color: #fff;
+}
+
+.navbar .btn {
+  padding: 4px 10px;
+  font-size: 0.9rem;
+}
+
+/* Hero Section */
+#title {
+  text-align: left;
+}
+
+.big-heading {
+  font-size: 3rem;
+  line-height: 1.5;
+  font-weight: 700;
+  margin-top: 50px;
+}
+
+.download-button {
+  margin: 5% 3% 5% 0;
+}
+
+.image-iphone {
+  width: 60%;
+  transform: rotate(0deg);
+  position: absolute;
+  right: 10%;
+  top: 100px;
+}
+
+.button-active {
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Features Section */
+#features {
+  padding: 4% 15%;
+}
+
+.feature-box {
+  padding: 0;
+}
+
+.feature-box img {
+  width: 64px;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.spacer {
+  margin: 0 10px;
+  box-shadow: 0px 49px 40px rgba(50, 50, 71, 0.05);
+  padding: 10%;
+  background-color: #fff;
+  border-radius: 10px;
+}
+
+.btn-outline-primary:hover,
+.btn-outline-success:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Press Section */
+#press {
+  padding: 5% 1%;
+}
+
+.press-img {
+  width: 10%;
+  margin: 20px;
+}
+
+.roundedimg {
+  border-radius: 50%;
+  height: 100px;
+  display: block;
+  margin: 30px auto;
+}
+
+/* Recharge and Transfer Sections */
+section img {
+  margin-bottom: 10px;
+  transition: transform 0.3s ease;
+}
+
+section img:hover {
+  transform: scale(1.1);
+}
+
+.grey-section {
+  background-color: #f5f5f5;
+}
+
+.white-section {
+  background-color: #ffffff;
+}
+
+section h3 {
+  font-size: 1.8rem;
+  margin-bottom: 30px;
+  font-weight: bold;
+}
+
+section button img {
+  max-height: 50px;
+  object-fit: contain;
+}
+
+/* Recent Transactions */
+.list-group-item {
+  border: none;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Footer */
+footer {
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+  background-color: #343a40;
+}
+
+footer a {
+  text-decoration: none;
+  color: #fff;
+  margin: 0 10px;
+}
+/* Dark Mode Styles */
+body.dark-mode {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+body.dark-mode .navbar {
+  background-color: #1f1f1f !important;
+}
+
+body.dark-mode .list-group-item {
+  background-color: #222;
+  color: #fff;
+  border: 1px solid #444;
+}
+
+body.dark-mode footer {
+  background-color: #000;
+}
+
+body.dark-mode section img:hover {
+  transform: scale(1.1);
+}
+
+body.dark-mode .btn-light {
+  background-color: #444;
+  color: #280ae8;
+  border: none;
+}
+
+body.dark-mode input,
+body.dark-mode textarea,
+body.dark-mode select {
+  background-color: #1e1e1e;
+  color: #fff;
+  border: 1px solid #444;
+}
+
+body.dark-mode .modal-content {
+  background-color: #1e1e1e;
+  color: #fff;
+}
+
+
+#upiInput {
+  max-width: 400px;
+  padding: 10px;
+  font-size: 1rem;
+}
+
+#qrImage {
+  margin-top: 10px;
+  border: 2px solid #ccc;
+  padding: 5px;
+  background-color: #fff;
+}
+
+#sendMoneyForm input {
+  padding: 10px;
+  font-size: 1rem;
+}
+
+#sendMoneyForm button {
+  width: 100%;
+  font-weight: 600;
+}
+
+#confirmation {
+  font-size: 1.2rem;
+}
+
+/* 📱 Extra Small Devices (phones) */
+@media (max-width: 575.98px) {
+  h1, h3 {
+    font-size: 1.3rem;
+  }
+
+  .navbar-brand {
+    font-size: 1.2rem;
+  }
+
+  .navbar-text {
+    font-size: 0.9rem;
+  }
+
+  .modal-title {
+    font-size: 1.1rem;
+  }
+
+  .modal-body input {
+    font-size: 0.95rem;
+  }
+
+  .list-group-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .list-group-item span {
+    align-self: flex-end;
+    font-size: 1rem;
+    margin-top: 10px;
+  }
+}
+
+/* 🧾 Small Devices (landscape phones) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .navbar-brand img {
+    width: 180px;
+  }
+
+  .download-button {
+    margin: 10px 0;
+  }
+
+  .image-iphone {
+    display: none;
+  }
+
+  .feature-box img {
+    width: 48px;
+  }
+}
+
+/* 💻 Medium Devices (tablets) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  h1 {
+    font-size: 2.2rem;
+  }
+
+  .feature-box img {
+    width: 60px;
+  }
+
+  .list-group-item {
+    font-size: 1rem;
+  }
+}
+
+/* 🖥️ Large Devices (desktops) */
+@media (min-width: 992px) {
+  h1 {
+    font-size: 3rem;
+  }
+
+  .navbar {
+    padding: 1rem 2rem;
+  }
+
+  .feature-box img {
+    width: 64px;
+  }
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+button {
+  font-size: 1rem;
+}
+
+button:focus,
+button:active {
+  outline: none;
+  box-shadow: none !important;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}

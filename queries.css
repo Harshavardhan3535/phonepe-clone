@@ -1,0 +1,72 @@
+@media (max-width: 768px) {
+  .big-heading {
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  .download-button {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+
+  .image-iphone {
+    position: static;
+    width: 80%;
+    margin: 20px auto;
+    display: block;
+  }
+
+  .press-img {
+    width: 20%;
+    margin: 10px;
+  }
+
+  .navbar-brand img {
+    width: 150px;
+  }
+
+  section h3 {
+    font-size: 1.5rem;
+  }
+
+  footer {
+    font-size: 0.8rem;
+  }
+
+  .container {
+    padding: 0 15px;
+  }
+
+  .list-group-item {
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .list-group-item span {
+    align-self: flex-end;
+    font-size: 1rem;
+    margin-top: 10px;
+  }
+
+  .modal-dialog {
+    max-width: 90%;
+    margin: 1.75rem auto;
+  }
+
+  .modal-body input,
+  .modal-body label {
+    font-size: 0.95rem;
+  }
+
+  h1, h2, h3 {
+    word-wrap: break-word;
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .image-iphone {
+    display: none;
+  }
+}
