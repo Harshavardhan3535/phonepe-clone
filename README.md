@@ -16,7 +16,7 @@ A fully responsive UI clone of PhonePe, built with HTML, CSS, Bootstrap, and Jav
 🖥️ Fully responsive across mobile, tablet, and desktop
 
 🚀 Live Demo
-👉 https://harshavardhan3535.github.io/phonepe-clone 
+👉 https://harshavardhan3535.github.io/phonepe-clone/
 
 🔧 Tech Stack
 HTML5
